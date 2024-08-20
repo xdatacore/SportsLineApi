@@ -7,8 +7,7 @@ import org.springframework.stereotype.Service
 
 @Service
 class InvoiceHeaderService(
-    @Autowired private val invoiceHeaderRepository: InvoiceHeaderRepository,
-    @Autowired private val counterService: CounterService
+    @Autowired private val invoiceHeaderRepository: InvoiceHeaderRepository
 ) {
 
     fun getAllInvoiceHeaders(): List<InvoiceHeader> {
@@ -24,9 +23,7 @@ class InvoiceHeaderService(
     }
 
     fun createInvoiceHeader(invoiceHeader: InvoiceHeader): InvoiceHeader {
-        val numFactura = counterService.getNextSequence("invoiceNumber")
-        val newInvoiceHeader = invoiceHeader.copy(numFactura = numFactura)
-        return invoiceHeaderRepository.save(newInvoiceHeader)
+        return invoiceHeaderRepository.save(invoiceHeader)
     }
 
     fun updateInvoiceHeader(id: String, updatedInvoiceHeader: InvoiceHeader): InvoiceHeader? {

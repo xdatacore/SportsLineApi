@@ -7,9 +7,8 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails
 
 @Document(collection = "usuario")
-data class User(
-    @Id val id: String? = null,
-    val nombreUsuario: String,
+data class Usuario(
+    @Id val nombreUsuario: String,
     val clave: String,
     val tipo: Int // 1--ADM, 2--VENDEDOR
 ) : UserDetails {

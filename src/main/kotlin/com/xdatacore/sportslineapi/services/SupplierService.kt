@@ -22,7 +22,7 @@ class SupplierService(@Autowired private val supplierRepository: SupplierReposit
 
     fun updateSupplier(id: String, updatedSupplier: Supplier): Supplier? {
         return if (supplierRepository.existsById(id)) {
-            val supplierToSave = updatedSupplier.copy(idProveedor = id)
+            val supplierToSave = updatedSupplier.copy(codProv = id)
             supplierRepository.save(supplierToSave)
         } else {
             null

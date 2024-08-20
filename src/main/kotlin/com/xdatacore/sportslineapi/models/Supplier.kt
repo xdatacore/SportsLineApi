@@ -5,6 +5,6 @@ import org.springframework.data.mongodb.core.mapping.Document
 
 @Document(collection = "proveedor")
 data class Supplier (
-    @Id val idProveedor: String? = null,
-    val nombre: String
+    val nombre: String? = null,
+    @Id val codProv: String? = null
 )

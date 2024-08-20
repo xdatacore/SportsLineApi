@@ -6,11 +6,11 @@ import java.time.Instant
 import java.time.LocalDateTime
 import java.time.ZoneOffset
 
-@Document(collection = "encabezadoFactura")
+@Document(collection = "ordenCompra")
 data class PurchaseOrderHeader (
     @Id val idEncabezadoFactura: String? = null,
     val numOC: Int,
-    val idProveedor: String? = null,
+    val codProveedor: String? = null,
     val fechaOC: LocalDateTime? = LocalDateTime.ofInstant(Instant.now(), ZoneOffset.UTC),
     val aplicada: Boolean
 )

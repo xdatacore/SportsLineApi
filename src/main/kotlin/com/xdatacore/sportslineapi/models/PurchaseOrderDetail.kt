@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document
 data class PurchaseOrderDetail (
     @Id val idDetalleOC: String? = null,
     val numOC: Int,
-    val idProducto: String,
+    val codProducto: String,
     val cantidad: Int?,
     val costo: Double
 )

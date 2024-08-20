@@ -19,10 +19,24 @@ class SecurityConfig(private val userDetailsService: CustomUserDetailsService) {
     @Bean
     fun securityFilterChain(http: HttpSecurity): SecurityFilterChain {
         http
+            .csrf { it.disable() }  // Desactiva CSRF
+            .authorizeHttpRequests { requests ->
+                requests
+                    .anyRequest().permitAll()  // Permitir acceso a todos los endpoints sin autenticación
+            }
+            .sessionManagement { it.sessionCreationPolicy(SessionCreationPolicy.STATELESS) }
+
+        return http.build()
+    }
+
+    @Bean
+    fun securityFilterChainBackup(http: HttpSecurity): SecurityFilterChain {
+        http
             .csrf { it.disable() }
             .authorizeHttpRequests { requests ->
                 requests
                     .requestMatchers("/users/authenticate", "/users/register").permitAll()
+                    .requestMatchers("/**").hasRole("ADMIN")
                     .anyRequest().authenticated()
             }
             .sessionManagement { it.sessionCreationPolicy(SessionCreationPolicy.STATELESS) }

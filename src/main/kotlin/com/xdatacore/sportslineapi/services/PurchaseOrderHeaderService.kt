@@ -7,8 +7,7 @@ import org.springframework.stereotype.Service
 
 @Service
 class PurchaseOrderHeaderService(
-    @Autowired private val purchaseOrderHeaderRepository: PurchaseOrderHeaderRepository,
-    @Autowired private val counterService: CounterService
+    @Autowired private val purchaseOrderHeaderRepository: PurchaseOrderHeaderRepository
 ) {
 
     fun getAllPurchaseOrderHeaders(): List<PurchaseOrderHeader> {
@@ -24,9 +23,7 @@ class PurchaseOrderHeaderService(
     }
 
     fun createPurchaseOrderHeader(purchaseOrderHeader: PurchaseOrderHeader): PurchaseOrderHeader {
-        val numOC = counterService.getNextSequence("purchaseOrderNumber")
-        val newPurchaseOrderHeader = purchaseOrderHeader.copy(numOC = numOC)
-        return purchaseOrderHeaderRepository.save(newPurchaseOrderHeader)
+        return purchaseOrderHeaderRepository.save(purchaseOrderHeader)
     }
 
     fun updatePurchaseOrderHeader(id: String, updatedPurchaseOrderHeader: PurchaseOrderHeader): PurchaseOrderHeader? {

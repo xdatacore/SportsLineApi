@@ -1,2 +1,2 @@
 spring.application.name=sportslineapi
-spring.data.mongodb.uri=mongodb+srv://<user>:<password>@<connection>/<collection>
+spring.data.mongodb.uri=mongodb+srv://<usuario>:<password>@<connection>/<collection>

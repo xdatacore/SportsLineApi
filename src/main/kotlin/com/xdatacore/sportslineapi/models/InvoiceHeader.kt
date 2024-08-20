@@ -11,6 +11,6 @@ data class InvoiceHeader (
     @Id val encabezadoFacturaId: String? = null,
     val numFactura: Int,
     val idCliente: String? = null,
-    val fechaFactura: LocalDateTime? = LocalDateTime.ofInstant(Instant.now(), ZoneOffset.UTC),
+    val fechaFac: LocalDateTime? = LocalDateTime.ofInstant(Instant.now(), ZoneOffset.UTC),
     val total: Double
 )
